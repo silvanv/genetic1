@@ -85,9 +85,9 @@
 
 (defn darwin
   "Do the evolution."
-  [population-size solution]
+  [initial-population solution]
   (let [max-fitness (calc-max-fitness solution)]
-    (loop [population (generate-population population-size)
+    (loop [population initial-population
            result (repeat gene-size 0)
            iteration 0]
       (if (< (calc-fitness solution result) (calc-max-fitness solution))
@@ -102,4 +102,4 @@
 ; main
 
 (defn -main []
-  (darwin 10 [1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1]))
+  (darwin (generate-population 10) [1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1]))
