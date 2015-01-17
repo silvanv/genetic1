@@ -84,7 +84,7 @@
     (get-fittest solution population)))
 
 (defn darwin
-  "Do the eveolution."
+  "Do the evolution."
   [population-size solution]
   (let [max-fitness (calc-max-fitness solution)]
     (loop [population (generate-population population-size)
