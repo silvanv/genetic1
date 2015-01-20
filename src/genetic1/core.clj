@@ -17,7 +17,9 @@
 (defn calc-fitness
   "Calculate the fitness of an individual relative to a given solution."
   [solution individual]
-  (reduce + (map #(if (= %1 %2) 1 0) solution individual)))
+  (->>
+    (map #(if (= %1 %2) 1 0) solution individual)
+    (reduce +)))
 
 (defn calc-max-fitness
   "Calculate the maximal fitness on a solution."
@@ -39,6 +41,7 @@
   (repeatedly n generate-individual))
 
 (defn get-fittest
+
   "Get the fittest individual out of a population."
   [solution population]
   (reduce #(fitter-individual solution %1 %2) population))
