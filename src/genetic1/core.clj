@@ -4,13 +4,13 @@
 ; individual
 
 (def gene-size 24)
-(def gene-fn #(int (rand 2)))
-(def genes-fn #(repeatedly gene-size gene-fn))
 
 (defn generate-individual
-  "Generate a new random individual."
+  "Generate a new randomly initialized individual."
   []
-  (genes-fn))
+  (letfn [(gene-fn [] (int (rand 2)))
+          (genes-fn [] (repeatedly gene-size #(gene-fn)))]
+    (genes-fn)))
 
 ; fitness calculations
 
