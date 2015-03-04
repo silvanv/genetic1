@@ -18,8 +18,8 @@
   "Calculate the fitness of an individual relative to a given solution."
   [solution individual]
   (->>
-    (map #(if (= %1 %2) 1 0) solution individual)
-    (reduce +)))
+   (map #(if (= %1 %2) 1 0) solution individual)
+   (reduce +)))
 
 (defn calc-max-fitness
   "Calculate the maximal fitness on a solution."
@@ -78,13 +78,13 @@
   The fittest individual will be preserved."
   [solution population]
   (conj
-    (vec
-      (repeatedly
-        (dec (count population))
-        #(let [individual-a (crossover-selection solution population)
-               individual-b (crossover-selection solution population)]
-          (mutation (crossover individual-a individual-b)))))
-    (get-fittest solution population)))
+   (vec
+    (repeatedly
+     (dec (count population))
+     #(let [individual-a (crossover-selection solution population)
+            individual-b (crossover-selection solution population)]
+        (mutation (crossover individual-a individual-b)))))
+   (get-fittest solution population)))
 
 (defn darwin
   "Do the evolution."
