@@ -41,7 +41,6 @@
   (repeatedly n generate-individual))
 
 (defn get-fittest
-
   "Get the fittest individual out of a population."
   [solution population]
   (reduce #(fitter-individual solution %1 %2) population))
